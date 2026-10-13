@@ -1,67 +1,134 @@
-        document.getElementById('signupForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+document.getElementById("register").addEventListener("submit", function (event) {
+event.preventDefault();
 
-            let username = document.getElementById('username').value;
-            let email = document.getElementById('email').value;
-            let password = document.getElementById('password').value;
-            let confirmPassword = document.getElementById('confirmPassword').value;
-            let message = document.getElementById('message');
-            let passwordError = document.getElementById('passwordError');
-            let confirmPasswordError = document.getElementById('confirmPasswordError');
+```
+const username = document.getElementById("username").value.trim();
+const email = document.getElementById("email").value.trim();
+const password = document.getElementById("password").value;
+const confirmPassword = document.getElementById("confirmPassword").value;
 
-            let passwordValid = validatePassword(password);
-            if (!passwordValid) {
-                passwordError.textContent = 'Password does not meet the requirements.';
-                return;
-            } else {
-                passwordError.textContent = '';
-            }
+const message = document.getElementById("message");
+const passwordError = document.getElementById("passwordError");
+const confirmPasswordError = document.getElementById("confirmPasswordError");
 
-            if (password !== confirmPassword) {
-                confirmPasswordError.textContent = 'Passwords do not match!';
-                return;
-            } else {
-                confirmPasswordError.textContent = '';
-            }
+passwordError.textContent = "";
+confirmPasswordError.textContent = "";
+message.textContent = "";
 
-            // Here you can add code to send the form data to the server
+// Check password
+if (!validatePassword(password)) {
+    passwordError.textContent =
+        "Password must contain at least 8 characters, uppercase, lowercase, number and special character.";
+    return;
+}
 
-            message.style.color = 'green';
-            message.textContent = 'Signup successful!';
-        });
+// Check passwords match
+if (password !== confirmPassword) {
+    confirmPasswordError.textContent = "Passwords do not match!";
+    return;
+}
 
-        document.getElementById('password').addEventListener('focus', function () {
-            document.getElementById('passwordHint').style.display = 'block';
-        });
+// Check if username already exists
+const existingUser = localStorage.getItem("user");
 
-        document.getElementById('password').addEventListener('blur', function () {
-            document.getElementById('passwordHint').style.display = 'none';
-        });
+if (existingUser) {
+    const user = JSON.parse(existingUser);
 
-        document.getElementById('password').addEventListener('input', function () {
-            let password = this.value;
-            let passwordStrength = document.getElementById('passwordStrength');
-            let strength = getPasswordStrength(password);
+    if (user.username.toLowerCase() === username.toLowerCase()) {
+        message.style.color = "red";
+        message.textContent = "This username is already registered.";
+        return;
+    }
+}
 
-            passwordStrength.innerHTML = ''; // Clear previous strength bars
-            if (strength) {
-                let strengthBar = document.createElement('div');
-                strengthBar.className = strength;
-                passwordStrength.appendChild(strengthBar);
-            }
-        });
+// Save account
+const user = {
+    username: username,
+    email: email,
+    password: password
+};
 
-        function validatePassword(password) {
-            let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-            return regex.test(password);
-        }
+localStorage.setItem("user", JSON.stringify(user));
 
-        function getPasswordStrength(password) {
-            if (password.length < 8) {
-                return 'weak';
-            }
-            if (password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/)) {
-                return 'strong';
-            }
-            return 'medium';
-        }
+message.style.color = "green";
+message.textContent = "Registration successful!";
+
+// Clear form
+document.getElementById("register").reset();
+
+// Go to login after a short delay
+setTimeout(function () {
+    window.location.href = "login.html";
+}, 1500);
+```
+
+});
+
+// Show password hint
+document.getElementById("password").addEventListener("focus", function () {
+document.getElementById("passwordHint").style.display = "block";
+});
+
+// Hide password hint
+document.getElementById("password").addEventListener("blur", function () {
+document.getElementById("passwordHint").style.display = "none";
+});
+
+// Password strength
+document.getElementById("password").addEventListener("input", function () {
+
+```
+const password = this.value;
+const passwordStrength = document.getElementById("passwordStrength");
+
+passwordStrength.innerHTML = "";
+
+const strength = getPasswordStrength(password);
+
+if (strength) {
+    const strengthBar = document.createElement("div");
+
+    strengthBar.className = strength;
+
+    passwordStrength.appendChild(strengthBar);
+}
+```
+
+});
+
+// Validate password
+function validatePassword(password) {
+
+```
+const regex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+return regex.test(password);
+```
+
+}
+
+// Password strength
+function getPasswordStrength(password) {
+
+```
+if (password.length === 0) {
+    return "";
+}
+
+if (password.length < 8) {
+    return "weak";
+}
+
+if (
+    password.match(
+        /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/
+    )
+) {
+    return "strong";
+}
+
+return "medium";
+```
+
+}
