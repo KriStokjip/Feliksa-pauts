@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project | TaskFlow</title><link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script><script src="project.js" defer></script>
+</head><body class="app-page">
+<header class="topbar"><a class="brand" href="dashboard.html">TaskFlow<span>.</span></a><nav class="topnav"><a class="nav-link" href="dashboard.html">Dashboard</a><a class="nav-link active" href="projects.html">My projects</a></nav><div class="user-menu"><span id="userGreeting" class="user-greeting"></span><button id="logoutButton" class="btn btn-quiet btn-small">Log out</button></div></header>
+<main class="page-shell"><p class="breadcrumb"><a href="projects.html">← All projects</a></p><section id="projectHeader" class="project-hero panel"></section>
+<section class="project-work-grid"><article class="panel tasks-panel"><div class="panel-heading"><div><h2>Tasks</h2><p class="muted">Break the project into manageable steps.</p></div><button id="showTaskForm" class="btn btn-primary">＋ Add task</button></div>
+<div id="taskFormPanel" class="task-form-panel hidden"><form id="taskForm"><input type="hidden" id="taskId"><div class="form-grid">
+<div class="field field-wide"><label for="taskTitle">Task title</label><input id="taskTitle" maxlength="120" required placeholder="What needs to be done?"></div>
+<div class="field"><label for="taskAssignee">Assign to</label><select id="taskAssignee"><option value="">Unassigned</option></select></div>
+<div class="field"><label for="taskDeadline">Deadline</label><input id="taskDeadline" type="date"></div>
+<div class="field"><label for="taskPriority">Priority</label><select id="taskPriority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select></div>
+<div class="field"><label for="taskStatus">Status</label><select id="taskStatus"><option value="todo">To do</option><option value="doing">In progress</option><option value="done">Completed</option></select></div>
+</div><div class="form-actions"><button type="button" id="cancelTaskForm" class="btn btn-secondary">Cancel</button><button type="submit" class="btn btn-primary">Save task</button></div><p id="taskFormMessage" class="message" role="status"></p></form></div>
+<div class="task-toolbar"><select id="taskStatusFilter" aria-label="Filter tasks by status"><option value="all">All tasks</option><option value="todo">To do</option><option value="doing">In progress</option><option value="done">Completed</option></select><select id="taskPriorityFilter" aria-label="Filter tasks by priority"><option value="all">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select></div><div id="taskList" class="task-list"></div></article>
+<aside class="side-column"><article class="panel progress-panel"><h2>Project progress</h2><div class="progress-number" id="progressNumber">0%</div><div class="progress-track"><div id="progressBar" class="progress-fill"></div></div><p id="progressCaption" class="muted small-text">0 of 0 tasks completed</p></article>
+<article class="panel team-panel"><div class="panel-heading"><div><h2>Project team</h2><p class="muted">Registered TaskFlow users</p></div></div><form id="memberForm" class="member-form"><input id="memberName" placeholder="Registered username" aria-label="Username to add" required><button class="btn btn-secondary" type="submit">Add</button></form><p id="memberMessage" class="message" role="status"></p><div id="memberList" class="member-list"></div></article>
+<article class="panel settings-panel"><h2>Project settings</h2><p class="muted small-text">Change project details or remove this project.</p><button id="editProjectButton" class="btn btn-secondary btn-full">Edit project settings</button><button id="deleteProjectButton" class="btn btn-danger btn-full">Delete project</button></article></aside></section>
+</main>
+</body>
+</html>
