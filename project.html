@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Project | TaskFlow
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="app.js">
+  </script>
+  <script defer="" src="project.js">
+  </script>
+ </head>
+ <body class="app-page">
+  <header class="topbar">
+   <a class="brand" href="dashboard.html">
+    TaskFlow<span>.</span>
+   </a>
+   <nav class="topnav">
+    <a class="nav-link" href="dashboard.html">
+     Dashboard
+    </a>
+    <a class="nav-link active" href="projects.html">
+     My projects
+    </a>
+   </nav>
+   <div class="user-menu">
+    <span class="user-greeting" id="userGreeting">
+    </span>
+    <button class="btn btn-quiet btn-small" id="logoutButton">
+     Log out
+    </button>
+   </div>
+  </header>
+  <main class="page-shell">
+   <p class="breadcrumb">
+    <a href="projects.html">
+     ← All projects
+    </a>
+   </p>
+   <section class="project-hero panel" id="projectHeader">
+   </section>
+   <section class="project-work-grid" id="projectWorkGrid">
+    <article class="panel tasks-panel">
+     <div class="panel-heading">
+      <div>
+       <h2>
+        Tasks
+       </h2>
+       <p class="muted">
+        Break the project into manageable steps.
+       </p>
+      </div>
+      <button class="btn btn-primary" id="showTaskForm">
+       ＋ Add task
+      </button>
+     </div>
+     <div class="task-form-panel hidden" id="taskFormPanel">
+      <form id="taskForm">
+       <input id="taskId" type="hidden"/>
+       <div class="form-grid">
+        <div class="field field-wide">
+         <label for="taskTitle">
+          Task title
+         </label>
+         <input id="taskTitle" maxlength="120" placeholder="What needs to be done?" required=""/>
+        </div>
+        <div class="field">
+         <label for="taskAssignee">
+          Assign to
+         </label>
+         <select id="taskAssignee">
+          <option value="">
+           Unassigned
+          </option>
+         </select>
+        </div>
+        <div class="field">
+         <label for="taskDeadline">
+          Deadline
+         </label>
+         <input id="taskDeadline" type="date"/>
+        </div>
+        <div class="field">
+         <label for="taskPriority">
+          Priority
+         </label>
+         <select id="taskPriority">
+          <option value="high">
+           High
+          </option>
+          <option selected="" value="medium">
+           Medium
+          </option>
+          <option value="low">
+           Low
+          </option>
+         </select>
+        </div>
+        <div class="field">
+         <label for="taskStatus">
+          Status
+         </label>
+         <select id="taskStatus">
+          <option value="todo">
+           To do
+          </option>
+          <option value="doing">
+           In progress
+          </option>
+          <option value="done">
+           Completed
+          </option>
+         </select>
+        </div>
+       </div>
+       <div class="form-actions">
+        <button class="btn btn-secondary" id="cancelTaskForm" type="button">
+         Cancel
+        </button>
+        <button class="btn btn-primary" type="submit">
+         Save task
+        </button>
+       </div>
+       <p class="message" id="taskFormMessage" role="status">
+       </p>
+      </form>
+     </div>
+     <div class="task-toolbar">
+      <select aria-label="Filter tasks by status" id="taskStatusFilter">
+       <option value="all">
+        All tasks
+       </option>
+       <option value="todo">
+        To do
+       </option>
+       <option value="doing">
+        In progress
+       </option>
+       <option value="done">
+        Completed
+       </option>
+      </select>
+      <select aria-label="Filter tasks by priority" id="taskPriorityFilter">
+       <option value="all">
+        All priorities
+       </option>
+       <option value="high">
+        High priority
+       </option>
+       <option value="medium">
+        Medium priority
+       </option>
+       <option value="low">
+        Low priority
+       </option>
+      </select>
+     </div>
+     <div class="task-list" id="taskList">
+     </div>
+    </article>
+    <aside class="side-column">
+     <article class="panel progress-panel">
+      <h2>
+       Project progress
+      </h2>
+      <div class="progress-number" id="progressNumber">
+       0%
+      </div>
+      <div class="progress-track">
+       <div class="progress-fill" id="progressBar">
+       </div>
+      </div>
+      <p class="muted small-text" id="progressCaption">
+       0 of 0 tasks completed
+      </p>
+     </article>
+     <article class="panel team-panel">
+      <div class="panel-heading">
+       <div>
+        <h2>
+         Project team
+        </h2>
+        <p class="muted">
+         Registered TaskFlow users
+        </p>
+       </div>
+      </div>
+      <form class="member-form" id="memberForm">
+       <input aria-label="Username to add" id="memberName" placeholder="Registered username" required=""/>
+       <button class="btn btn-secondary" type="submit">
+        Add
+       </button>
+      </form>
+      <p class="message" id="memberMessage" role="status">
+      </p>
+      <div class="member-list" id="memberList">
+      </div>
+     </article>
+     <article class="panel settings-panel" id="ownerSettings">
+      <h2>
+       Project settings
+      </h2>
+      <p class="muted small-text">
+       Change project details or remove this project.
+      </p>
+      <button class="btn btn-secondary btn-full" id="editProjectButton">
+       Edit project settings
+      </button>
+      <button class="btn btn-danger btn-full" id="deleteProjectButton">
+       Delete project
+      </button>
+     </article>
+     <article class="panel settings-panel hidden" id="leaveProjectPanel">
+      <h2>
+       Leave project
+      </h2>
+      <p class="muted small-text">
+       You can leave this project at any time. Tasks assigned to you will become unassigned, and you will no longer see the project.
+      </p>
+      <button class="btn btn-danger btn-full" id="leaveProjectButton" type="button">
+       Leave project
+      </button>
+      <p class="message" id="leaveProjectMessage" role="alert">
+      </p>
+     </article>
+    </aside>
+   </section>
+  </main>
+ </body>
+</html>
+
