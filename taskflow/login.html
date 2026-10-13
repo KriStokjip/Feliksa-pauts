@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Login | TaskFlow
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="auth.js">
+  </script>
+ </head>
+ <body class="auth-page">
+  <main class="auth-card">
+   <a class="brand brand-dark" href="login.html">
+    TaskFlow<span>.</span>
+   </a>
+   <p class="eyebrow">
+    YOUR WORKSPACE
+   </p>
+   <h1>
+    Welcome back
+   </h1>
+   <p class="muted auth-intro">
+    Log in to manage your projects and tasks.
+   </p>
+   <form class="stack-form" id="loginForm">
+    <label for="loginUsername">
+     Username
+    </label>
+    <input autocomplete="username" id="loginUsername" minlength="3" placeholder="Your username" required=""/>
+    <label for="loginPassword">
+     Password
+    </label>
+    <div class="input-with-button">
+     <input autocomplete="current-password" id="loginPassword" placeholder="Your password" required="" type="password"/>
+     <button class="show-password" data-toggle="loginPassword" type="button">
+      Show
+     </button>
+    </div>
+    <p aria-live="polite" class="message" id="loginMessage" role="status">
+    </p>
+    <button class="btn btn-primary btn-full" type="submit">
+     Log in
+    </button>
+   </form>
+   <p class="auth-switch">
+    Don't have an account?
+    <a href="register.html">
+     Create one
+    </a>
+   </p>
+  </main>
+ </body>
+</html>
+

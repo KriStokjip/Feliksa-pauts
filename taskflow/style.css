@@ -1,0 +1,1162 @@
+:root {
+  --bg: #403e3f;
+  --panel: #c9d3dc;
+  --panel-light: #dce3e9;
+  --text: #151719;
+  --muted: #44505b;
+  --white: #f7f8fa;
+  --blue: #2e55cf;
+  --blue-dark: #2446b0;
+  --purple: #a47aff;
+  --green: #57b637;
+  --red: #ff454b;
+  --border: rgba(20, 25, 30, .12);
+  --shadow: 0 14px 35px rgba(0, 0, 0, .12);
+}
+
+/* 1. Reset and base*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #9e7bff;
+  outline-offset: 2px;
+}
+
+h1, h2, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 20px;
+  letter-spacing: -.35px;
+  margin-bottom: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.eyebrow {
+  color: #bba4ff;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.text-link {
+  color: #2446b0;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.text-link:hover, .auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* 2. Header and navigation*/
+
+.app-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.topbar {
+  min-height: 76px;
+  padding: 0 5.2%;
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.brand {
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 35px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -.8px;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.brand span {
+  color: var(--purple);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.nav-link {
+  color: #c7c5c8;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: white;
+  background: rgba(255,255,255,.1);
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-greeting {
+  font-size: 13px;
+  color: #e0dfe1;
+}
+
+/* 3. Page layout and buttons*/
+
+.page-shell {
+  width: min(1320px, 92%);
+  margin: 0 auto;
+  padding: 34px 0 24px;
+}
+
+.welcome-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  color: var(--white);
+}
+
+.welcome-row .muted {
+  color: #c4c1c5;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 17px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: transform .15s, background .15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+}
+
+.btn-secondary {
+  background: #e5ebf0;
+  color: #24292d;
+  border: 1px solid rgba(0,0,0,.05);
+}
+
+.btn-secondary:hover {
+  background: white;
+}
+
+.btn-quiet {
+  background: rgba(255,255,255,.1);
+  color: white;
+}
+
+.btn-quiet:hover {
+  background: rgba(255,255,255,.17);
+}
+
+.btn-danger {
+  background: #ffe1e2;
+  color: #b31e29;
+}
+
+.btn-danger:hover {
+  background: #ffc8ca;
+}
+
+.btn-small {
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* 4. Panels, cards and dashboard stats*/
+
+.stat-card, .panel {
+  background: var(--panel);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  padding: 20px 22px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #555f68;
+  font-weight: 600;
+}
+
+.stat-card strong {
+  font-size: 35px;
+  line-height: 1.2;
+  margin: 8px 0 4px;
+}
+
+.stat-foot {
+  color: #47525d;
+  font-size: 12px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: 22px;
+}
+
+.dashboard-panel {
+  min-height: 300px;
+  padding: 24px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.panel-heading .muted {
+  font-size: 12px;
+}
+
+.project-overview {
+  display: grid;
+  gap: 18px;
+}
+
+.overview-item {
+  display: grid;
+  gap: 8px;
+}
+
+.overview-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* 5. Tasks, priorities and progress*/
+
+.task-list {
+  display: grid;
+  gap: 10px;
+}
+
+.task-row {
+  background: rgba(255,255,255,.43);
+  border: 1px solid rgba(255,255,255,.38);
+  border-radius: 13px;
+  padding: 13px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.task-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.task-title {
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  margin-bottom: 5px;
+}
+
+.task-meta {
+  color: #45505c;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-button {
+  border: 0;
+  background: rgba(255,255,255,.55);
+  color: #333;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.icon-button:hover {
+  background: white;
+}
+
+.priority, .status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.priority-high {
+  background: #ffbfc1;
+  color: #8b1118;
+}
+
+.priority-medium {
+  background: #ffd1a8;
+  color: #82400d;
+}
+
+.priority-low {
+  background: #a6e18f;
+  color: #205d1c;
+}
+
+.status-todo {
+  background: #e6e9ed;
+  color: #555e67;
+}
+
+.status-doing {
+  background: #c6d6ff;
+  color: #2346a8;
+}
+
+.status-done {
+  background: #b8e9c3;
+  color: #226b36;
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+  border-radius: 99px;
+  background: rgba(65,111,242,.2);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  width: 0;
+  background: #a987f5;
+  transition: width .25s;
+}
+
+.task-deadline.overdue {
+  color: #b51d29;
+  font-weight: 700;
+}
+
+.is-done .task-title {
+  text-decoration: line-through;
+  opacity: .6;
+}
+
+.is-done {
+  opacity: .8;
+}
+
+.empty-state {
+  text-align: center;
+  color: #45505c;
+  padding: 30px 14px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.empty-state strong {
+  display: block;
+  color: #24292e;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+/* 6. Project listing and project cards*/
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 30px 0 16px;
+  color: white;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+}
+
+.filters input, .filters select, .task-toolbar select {
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #25292d;
+  background: var(--panel);
+  font-size: 12px;
+  min-width: 135px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 18px;
+}
+
+.project-card {
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  box-shadow: var(--shadow);
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.project-card h2 {
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.project-description {
+  color: #47525d;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 10px 0 18px;
+  overflow-wrap: anywhere;
+}
+
+.project-card .progress-track {
+  margin-top: auto;
+}
+
+.project-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #47525d;
+  margin-top: 13px;
+}
+
+.project-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 17px;
+}
+
+.project-card-actions .btn {
+  flex: 1;
+  padding: 10px;
+}
+
+/* 7. Forms and filters*/
+
+.form-panel {
+  padding: 24px;
+  margin-bottom: 26px;
+}
+
+.project-form .form-grid, .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
+}
+
+.field label, .stack-form label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.field input, .field textarea, .field select, .stack-form input, .member-form input {
+  width: 100%;
+  border: 1px solid #b4bec7;
+  background: #edf1f4;
+  color: #1d2227;
+  border-radius: 9px;
+  padding: 11px 12px;
+  font-size: 13px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field small {
+  color: #45505c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.message {
+  font-size: 12px;
+  margin: 10px 0 0;
+  min-height: 0;
+}
+
+.message:empty {
+  display: none;
+}
+
+.message.error {
+  color: #a71d28;
+}
+
+.message.success {
+  color: #206b31;
+}
+
+.task-form-panel {
+  background: rgba(255,255,255,.32);
+  padding: 17px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.task-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.task-toolbar select {
+  min-width: 0;
+  flex: 1;
+}
+
+/* 8. Individual project details and team*/
+
+.breadcrumb {
+  margin-bottom: 14px;
+  color: #ddd;
+  font-size: 12px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.project-hero {
+  padding: 25px 28px;
+  margin-bottom: 22px;
+}
+
+.project-hero-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.project-hero h1 {
+  font-size: 32px;
+  margin: 8px 0;
+}
+
+.project-hero .muted {
+  max-width: 700px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 17px;
+  font-size: 12px;
+  color: #5e6870;
+}
+
+.project-work-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(270px,.8fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.tasks-panel, .progress-panel, .team-panel, .settings-panel {
+  padding: 23px;
+}
+
+.progress-number {
+  font-size: 39px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.progress-panel .progress-track {
+  height: 12px;
+}
+
+.side-column {
+  display: grid;
+  gap: 16px;
+}
+
+.team-panel .panel-heading {
+  margin-bottom: 15px;
+}
+
+.member-form {
+  display: flex;
+  gap: 7px;
+}
+
+.member-form input {
+  min-width: 0;
+  flex: 1;
+}
+
+.member-form .btn {
+  padding: 10px 12px;
+}
+
+.member-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.4);
+}
+
+.member-item .avatar {
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  border: 0;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #403e3f;
+  color: white;
+  border: 2px solid var(--panel);
+  margin-left: -5px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.member-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.member-role {
+  color: #48535f;
+  font-size: 12px;
+}
+
+.remove-member {
+  border: 0;
+  background: transparent;
+  color: #9b2830;
+  padding: 4px 7px;
+}
+
+.settings-panel .btn {
+  margin-top: 9px;
+}
+
+/* 9. Login and registration*/
+
+.auth-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: min(100%, 420px);
+  background: var(--panel);
+  padding: 35px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.auth-card .brand {
+  display: inline-block;
+  color: #29292c;
+  margin-bottom: 30px;
+}
+
+.brand-dark {
+  color: #29292c;
+}
+
+.auth-card h1 {
+  font-size: 31px;
+  margin-bottom: 8px;
+}
+
+.auth-intro {
+  margin-bottom: 24px;
+}
+
+.stack-form {
+  display: grid;
+  gap: 9px;
+}
+
+.stack-form label {
+  margin-top: 5px;
+}
+
+.input-with-button {
+  display: flex;
+  gap: 7px;
+}
+
+.input-with-button input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #b4bec7;
+  background: #edf1f4;
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 13px;
+}
+
+.show-password {
+  border: 0;
+  background: #e5ebf0;
+  border-radius: 9px;
+  padding: 0 12px;
+  color: #30373d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.show-password:hover {
+  background: white;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 12px;
+  margin: 20px 0 0;
+  color: #535e67;
+}
+
+.auth-switch a {
+  color: #2446b0;
+  font-weight: 700;
+}
+
+.password-rules {
+  color: #46515c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* 10. Responsive layouts*/
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .project-work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .side-column {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .settings-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .topbar {
+    padding: 16px 4%;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .brand {
+    font-size: 30px;
+  }
+
+  .topnav {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .user-menu {
+    margin-left: auto;
+  }
+
+  .user-greeting {
+    display: none;
+  }
+
+  .page-shell {
+    width: 92%;
+    padding-top: 24px;
+  }
+
+  .welcome-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .stats-grid, .dashboard-grid, .project-grid, .side-column {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    min-height: 105px;
+  }
+
+  .dashboard-panel {
+    padding: 18px;
+  }
+
+  .filter-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .filters {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .filters input, .filters select {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .form-grid, .project-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-wide {
+    grid-column: auto;
+  }
+
+  .project-hero {
+    padding: 20px;
+  }
+
+  .project-hero-top {
+    flex-direction: column;
+  }
+
+  .tasks-panel, .progress-panel, .team-panel, .settings-panel {
+    padding: 17px;
+  }
+
+  .auth-card {
+    padding: 26px 22px;
+  }
+
+  .task-row {
+    align-items: flex-start;
+  }
+
+  .task-actions {
+    flex-direction: column;
+  }
+}
+
+/*Clear page-level errors and responsive action buttons.*/
+
+.page-error {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.no-projects {
+  grid-column: 1 / -1;
+}
+
+.project-card-actions {
+  flex-wrap: wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+/* 11. Invitations and owner-managed pending invitations */
+.invitations-panel {
+  padding: 24px;
+}
+
+.invitation-list,
+.pending-invite-list {
+  display: grid;
+  gap: 12px;
+}
+
+.invitation-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .50);
+  border: 1px solid rgba(255, 255, 255, .42);
+}
+
+.invitation-details {
+  min-width: 0;
+}
+
+.invitation-details h3,
+.pending-invitations h3 {
+  font-size: 16px;
+  margin: 0 0 9px;
+}
+
+.invitation-description {
+  max-width: 65ch;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  margin-bottom: 9px;
+}
+
+.invitation-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.invite-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #384e61;
+  white-space: nowrap;
+}
+
+.page-notice {
+  color: #e1f7e1;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.pending-invitations {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.pending-invite-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .45);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.pending-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #735114;
+  margin-left: 6px;
+}
+
+@media (max-width: 620px) {
+  .topnav {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+  }
+
+  .invitations-panel {
+    padding: 17px;
+  }
+
+  .invitation-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .invitation-actions {
+    flex-wrap: wrap;
+  }
+
+  .invitation-actions .btn {
+    flex: 1;
+  }
+}
+
+/* The message helper replaces class names, so style messages by location too. */
+.page-shell > .message.error {
+  color: #ffd5d7;
+}
+
+.page-shell > .message.success {
+  color: #d8f5d9;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invitations | TaskFlow</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="invitations.js" defer></script>
+</head>
+<body class="app-page">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">TaskFlow<span>.</span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="projects.html">My projects</a>
+      <a class="nav-link active" href="invitations.html" aria-current="page">Invitations</a>
+    </nav>
+    <div class="user-menu">
+      <span class="user-greeting" id="userGreeting"></span>
+      <button class="btn btn-quiet btn-small" id="logoutButton" type="button">Log out</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">WORK TOGETHER</p>
+        <h1>Project invitations</h1>
+        <p class="muted">Choose which teams you want to join.</p>
+      </div>
+      <a class="btn btn-secondary" href="projects.html">My projects</a>
+    </section>
+
+    <p id="invitationsError" class="message page-error" role="alert" aria-live="polite"></p>
+    <p id="invitationsNotice" class="message page-notice" role="status" aria-live="polite"></p>
+
+    <section class="panel invitations-panel" aria-labelledby="invitationsTitle">
+      <div class="panel-heading">
+        <div>
+          <h2 id="invitationsTitle">Pending invitations</h2>
+          <p class="muted">You won't be added to a project until you accept its invitation.</p>
+        </div>
+        <span id="invitationCount" class="invite-count" aria-live="polite"></span>
+      </div>
+      <div id="invitationsList" class="invitation-list" aria-live="polite">
+        <p class="muted">Loading invitations…</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
