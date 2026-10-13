@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | TaskFlow</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body class="app-page">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">TaskFlow<span>.</span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a class="nav-link active" href="dashboard.html" aria-current="page">Dashboard</a>
+      <a class="nav-link" href="my-tasks.html">My Tasks</a>
+      <a class="nav-link" href="projects.html">My projects</a>
+      <a class="nav-link" href="invitations.html">Invitations</a>
+      <a class="nav-link" href="profile.html">Profile</a>
+    </nav>
+    <div class="user-menu">
+      <span id="userGreeting" class="user-greeting"></span>
+      <button id="logoutButton" class="btn btn-quiet btn-small" type="button">Log out</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">YOUR WORKSPACE</p>
+        <h1>Dashboard</h1>
+        <p class="muted">All your personal and shared project tasks in one place.</p>
+      </div>
+      <div class="welcome-actions">
+        <a class="btn btn-secondary" href="my-tasks.html">＋ Personal task</a>
+        <a class="btn btn-primary" href="projects.html#new-project">＋ Create project</a>
+      </div>
+    </section>
+    <p id="dashboardError" class="message page-error" role="alert" aria-live="polite"></p>
+
+    <section class="stats-grid" aria-label="Task statistics">
+      <article class="stat-card">
+        <span class="stat-label">Projects</span>
+        <strong id="statProjects">0</strong>
+        <span class="stat-foot">Shared projects joined</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Open tasks</span>
+        <strong id="statOpen">0</strong>
+        <span class="stat-foot">Personal and shared</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Completed tasks</span>
+        <strong id="statDone">0</strong>
+        <span class="stat-foot">Personal and shared</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Overdue tasks</span>
+        <strong id="statOverdue">0</strong>
+        <span class="stat-foot">Past their deadline</span>
+      </article>
+    </section>
+
+    <section class="panel dashboard-panel dashboard-task-panel" aria-labelledby="dashboardTaskTitle">
+      <div class="panel-heading">
+        <div>
+          <h2 id="dashboardTaskTitle">All visible tasks</h2>
+          <p id="dashboardTaskCount" class="muted">Loading tasks…</p>
+        </div>
+      </div>
+      <div class="task-toolbar task-filters">
+        <label class="filter-control" for="dashboardStatus">Status
+          <select id="dashboardStatus">
+            <option value="open">Active</option>
+            <option value="done">Completed</option>
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label class="filter-control" for="dashboardScope">Source
+          <select id="dashboardScope">
+            <option value="all">All tasks</option>
+            <option value="personal">Personal only</option>
+            <option value="project">Shared projects</option>
+            <option value="assigned">Assigned to me</option>
+          </select>
+        </label>
+        <label class="filter-control" for="dashboardPriority">Priority
+          <select id="dashboardPriority">
+            <option value="all">All priorities</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+        <label class="filter-control" for="dashboardSort">Sort by
+          <select id="dashboardSort">
+            <option value="deadline">Deadline (soonest)</option>
+            <option value="priority">Priority (highest)</option>
+            <option value="title">Title (A–Z)</option>
+          </select>
+        </label>
+      </div>
+      <div id="dashboardTasks" class="task-list" aria-live="polite"></div>
+    </section>
+
+    <section class="panel dashboard-panel project-summary-panel" aria-labelledby="overviewTitle">
+      <div class="panel-heading">
+        <div>
+          <h2 id="overviewTitle">Project overview</h2>
+          <p class="muted">Progress across your shared projects</p>
+        </div>
+        <a href="projects.html" class="text-link">All projects →</a>
+      </div>
+      <div id="projectOverview" class="project-overview"></div>
+    </section>
+  </main>
+</body>
+</html>

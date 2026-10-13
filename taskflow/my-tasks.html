@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Tasks | TaskFlow</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="my-tasks.js" defer></script>
+</head>
+<body class="app-page">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">TaskFlow<span>.</span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link active" href="my-tasks.html" aria-current="page">My Tasks</a>
+      <a class="nav-link" href="projects.html">My projects</a>
+      <a class="nav-link" href="invitations.html">Invitations</a>
+      <a class="nav-link" href="profile.html">Profile</a>
+    </nav>
+    <div class="user-menu">
+      <span id="userGreeting" class="user-greeting"></span>
+      <button id="logoutButton" class="btn btn-quiet btn-small" type="button">Log out</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">PRIVATE WORKSPACE</p>
+        <h1>My Tasks</h1>
+        <p class="muted">Only you can see and manage these personal tasks.</p>
+      </div>
+      <button id="showPersonalTaskForm" class="btn btn-primary" type="button">＋ Add personal task</button>
+    </section>
+
+    <p id="personalTasksError" class="message page-error" role="alert" aria-live="polite"></p>
+
+    <section id="personalTaskFormPanel" class="panel form-panel hidden" aria-labelledby="personalTaskFormTitle">
+      <h2 id="personalTaskFormTitle">New personal task</h2>
+      <form id="personalTaskForm">
+        <input type="hidden" id="personalTaskId">
+        <div class="form-grid">
+          <div class="field field-wide">
+            <label for="personalTaskTitle">Task title</label>
+            <input id="personalTaskTitle" maxlength="120" required placeholder="What needs to be done?">
+          </div>
+          <div class="field field-wide">
+            <label for="personalTaskDescription">Description (optional)</label>
+            <textarea id="personalTaskDescription" rows="3" maxlength="10000" placeholder="Write the details here..."></textarea>
+          </div>
+          <div class="field">
+            <label for="personalTaskDeadline">Deadline</label>
+            <input id="personalTaskDeadline" type="date">
+          </div>
+          <div class="field">
+            <label for="personalTaskPriority">Priority</label>
+            <select id="personalTaskPriority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="personalTaskStatus">Status</label>
+            <select id="personalTaskStatus">
+              <option value="todo">To do</option>
+              <option value="doing">In progress</option>
+              <option value="done">Completed</option>
+            </select>
+          </div>
+        </div>
+        <p id="personalTaskFormMessage" class="message" role="status" aria-live="polite"></p>
+        <div class="form-actions">
+          <button id="cancelPersonalTaskForm" type="button" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save task</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel list-panel" aria-label="Personal task list">
+      <div class="panel-heading">
+        <div>
+          <h2>Personal task list</h2>
+          <p id="personalTaskCount" class="muted">Loading…</p>
+        </div>
+      </div>
+      <div class="task-toolbar task-filters">
+        <label class="filter-control" for="personalStatusFilter">Status
+          <select id="personalStatusFilter">
+            <option value="open">Active</option>
+            <option value="done">Completed</option>
+            <option value="all">All tasks</option>
+          </select>
+        </label>
+        <label class="filter-control" for="personalPriorityFilter">Priority
+          <select id="personalPriorityFilter">
+            <option value="all">All priorities</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+        <label class="filter-control" for="personalSort">Sort by
+          <select id="personalSort">
+            <option value="deadline">Deadline (soonest)</option>
+            <option value="priority">Priority (highest)</option>
+            <option value="newest">Newest first</option>
+          </select>
+        </label>
+      </div>
+      <div id="personalTaskList" class="task-list" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>

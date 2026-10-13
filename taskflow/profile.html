@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile | TaskFlow</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="profile.js" defer></script>
+</head>
+<body class="app-page">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">TaskFlow<span>.</span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="my-tasks.html">My Tasks</a>
+      <a class="nav-link" href="projects.html">My projects</a>
+      <a class="nav-link" href="invitations.html">Invitations</a>
+      <a class="nav-link active" href="profile.html" aria-current="page">Profile</a>
+    </nav>
+    <div class="user-menu">
+      <span id="userGreeting" class="user-greeting"></span>
+      <button id="logoutButton" class="btn btn-quiet btn-small" type="button">Log out</button>
+    </div>
+  </header>
+
+  <main class="page-shell narrow-page">
+    <div class="welcome-row">
+      <div>
+        <p class="eyebrow">ACCOUNT SETTINGS</p>
+        <h1>Profile</h1>
+        <p class="muted">Your username stays the same. You can edit your first name.</p>
+      </div>
+    </div>
+    <p id="profilePageError" class="message page-error" role="alert"></p>
+
+    <section class="panel form-panel" aria-labelledby="editProfileTitle">
+      <h2 id="editProfileTitle">Your information</h2>
+      <form id="profileForm" class="stack-form">
+        <label for="profileUsername">Username (cannot be changed)</label>
+        <input id="profileUsername" type="text" autocomplete="username" readonly>
+        <label for="profileEmail">Email (cannot be changed here)</label>
+        <input id="profileEmail" type="email" readonly>
+        <label for="profileFirstName">First name</label>
+        <input id="profileFirstName" type="text" maxlength="80" autocomplete="given-name" required>
+        <p id="profileMessage" class="message" role="status" aria-live="polite"></p>
+        <button class="btn btn-primary" type="submit">Save first name</button>
+      </form>
+    </section>
+
+    <section class="panel form-panel danger-section" aria-labelledby="deleteTitle">
+      <h2 id="deleteTitle">Delete account</h2>
+      <p class="small-warning">This action is irreversible. Your private tasks and projects you own will be permanently deleted, including their shared tasks and invitations. In other projects, your membership will be removed and your assigned tasks will become unassigned.</p>
+      <form id="deleteAccountForm" class="stack-form">
+        <label for="deleteAccountPassword">Current password</label>
+        <input id="deleteAccountPassword" type="password" autocomplete="current-password" required>
+        <label for="deleteAccountConfirmation">Type DELETE to confirm</label>
+        <input id="deleteAccountConfirmation" type="text" autocomplete="off" required pattern="DELETE" placeholder="DELETE">
+        <p id="deleteAccountMessage" class="message" role="alert" aria-live="polite"></p>
+        <button class="btn btn-danger" type="submit">DELETE ACCOUNT</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
