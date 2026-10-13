@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Dashboard | TaskFlow
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="app.js">
+  </script>
+  <script defer="" src="dashboard.js">
+  </script>
+ </head>
+ <body class="app-page">
+  <header class="topbar">
+   <a class="brand" href="dashboard.html">
+    TaskFlow<span>.</span>
+   </a>
+   <nav class="topnav">
+    <a class="nav-link active" href="dashboard.html">
+     Dashboard
+    </a>
+    <a class="nav-link" href="projects.html">
+     My projects
+    </a>
+    <a class="nav-link" href="invitations.html">
+     Invitations
+    </a>
+   </nav>
+   <div class="user-menu">
+    <span class="user-greeting" id="userGreeting">
+    </span>
+    <button class="btn btn-quiet btn-small" id="logoutButton">
+     Log out
+    </button>
+   </div>
+  </header>
+  <main class="page-shell">
+   <section class="welcome-row">
+    <div>
+     <p class="eyebrow">
+      YOUR WORKSPACE
+     </p>
+     <h1>
+      Dashboard
+     </h1>
+     <p class="muted">
+      A clear view of what needs your attention.
+     </p>
+    </div>
+    <a class="btn btn-primary" href="projects.html#new-project">
+     ＋ Create project
+    </a>
+   </section>
+   <p class="message page-error" id="dashboardError" role="alert">
+   </p>
+   <section class="stats-grid">
+    <article class="stat-card">
+     <span class="stat-label">
+      Projects
+     </span>
+     <strong id="statProjects">
+      0
+     </strong>
+     <span class="stat-foot">
+      In your workspace
+     </span>
+    </article>
+    <article class="stat-card">
+     <span class="stat-label">
+      Open tasks
+     </span>
+     <strong id="statOpen">
+      0
+     </strong>
+     <span class="stat-foot">
+      Still to be completed
+     </span>
+    </article>
+    <article class="stat-card">
+     <span class="stat-label">
+      Completed tasks
+     </span>
+     <strong id="statDone">
+      0
+     </strong>
+     <span class="stat-foot">
+      Nice work!
+     </span>
+    </article>
+    <article class="stat-card">
+     <span class="stat-label">
+      Overdue tasks
+     </span>
+     <strong id="statOverdue">
+      0
+     </strong>
+     <span class="stat-foot">
+      Past their deadline
+     </span>
+    </article>
+   </section>
+   <section class="dashboard-grid">
+    <article class="panel dashboard-panel">
+     <div class="panel-heading">
+      <div>
+       <h2>
+        Active tasks
+       </h2>
+       <p class="muted">
+        Tasks that still need attention
+       </p>
+      </div>
+      <a class="text-link" href="projects.html">
+       View projects →
+      </a>
+     </div>
+     <div class="task-list" id="activeTasks">
+     </div>
+    </article>
+    <article class="panel dashboard-panel">
+     <div class="panel-heading">
+      <div>
+       <h2>
+        Project overview
+       </h2>
+       <p class="muted">
+        Progress across your projects
+       </p>
+      </div>
+     </div>
+     <div class="project-overview" id="projectOverview">
+     </div>
+    </article>
+   </section>
+  </main>
+ </body>
+</html>
+

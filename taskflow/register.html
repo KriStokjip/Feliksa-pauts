@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Create account | TaskFlow
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="auth.js">
+  </script>
+ </head>
+ <body class="auth-page">
+  <main class="auth-card">
+   <a class="brand brand-dark" href="login.html">
+    TaskFlow<span>.</span>
+   </a>
+   <p class="eyebrow">
+    GET STARTED
+   </p>
+   <h1>
+    Create account
+   </h1>
+   <p class="muted auth-intro">
+    Set up your workspace and start organizing.
+   </p>
+   <form class="stack-form" id="registerForm">
+    <label for="registerUsername">
+     Username
+    </label>
+    <input autocomplete="username" id="registerUsername" maxlength="20" minlength="3" pattern="[A-Za-z0-9_]+" placeholder="3–20 letters, numbers or _" required=""/>
+    <label for="registerEmail">
+     Email
+    </label>
+    <input autocomplete="email" id="registerEmail" maxlength="254" placeholder="you@example.com" required="" type="email"/>
+    <label for="registerPassword">
+     Password
+    </label>
+    <div class="input-with-button">
+     <input autocomplete="new-password" id="registerPassword" placeholder="At least 8 characters" required="" type="password"/>
+     <button class="show-password" data-toggle="registerPassword" type="button">
+      Show
+     </button>
+    </div>
+    <div class="password-rules">
+     Use uppercase and lowercase letters, a number, and a special character.
+    </div>
+    <label for="confirmPassword">
+     Confirm password
+    </label>
+    <input autocomplete="new-password" id="confirmPassword" placeholder="Enter password again" required="" type="password"/>
+    <p aria-live="polite" class="message" id="registerMessage" role="status">
+    </p>
+    <button class="btn btn-primary btn-full" type="submit">
+     Create account
+    </button>
+   </form>
+   <p class="auth-switch">
+    Already registered?
+    <a href="login.html">
+     Log in
+    </a>
+   </p>
+  </main>
+ </body>
+</html>
+
