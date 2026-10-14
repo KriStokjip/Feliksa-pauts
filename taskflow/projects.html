@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   My projects | TaskFlow
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="javascript/app.js">
+  </script>
+  <script defer="" src="javascript/projects.js">
+  </script>
+ </head>
+ <body class="app-page">
+  <header class="topbar">
+   <a class="brand" href="dashboard.html">
+    TaskFlow
+    <span>
+     .
+    </span>
+   </a>
+   <nav aria-label="Main navigation" class="topnav">
+    <a class="nav-link" href="dashboard.html">
+     Dashboard
+    </a>
+    <a class="nav-link" href="my-tasks.html">
+     My Tasks
+    </a>
+    <a aria-current="page" class="nav-link active" href="projects.html">
+     My projects
+    </a>
+    <a class="nav-link" href="invitations.html">
+     Invitations
+    </a>
+    <a class="nav-link" href="profile.html">
+     Profile
+    </a>
+   </nav>
+   <div class="user-menu">
+    <span class="user-greeting" id="userGreeting">
+    </span>
+    <button class="btn btn-quiet btn-small" id="logoutButton">
+     Log out
+    </button>
+   </div>
+  </header>
+  <main class="page-shell">
+   <section class="welcome-row">
+    <div>
+     <p class="eyebrow">
+      PLAN TOGETHER
+     </p>
+     <h1>
+      My projects
+     </h1>
+     <p class="muted">
+      Keep plans, tasks, and teammates in one place.
+     </p>
+    </div>
+    <button class="btn btn-primary" id="showProjectForm">
+     ＋ Create project
+    </button>
+   </section>
+   <p class="message page-error" id="projectsError" role="alert">
+   </p>
+   <section class="panel form-panel hidden" id="projectFormPanel">
+    <div class="panel-heading">
+     <div>
+      <h2 id="projectFormTitle">
+       Create a project
+      </h2>
+      <p class="muted">
+       Add the basics. You can change them later.
+      </p>
+     </div>
+    </div>
+    <form id="projectForm">
+     <input id="projectId" type="hidden"/>
+     <div class="form-grid">
+      <div class="field field-wide">
+       <label for="projectName">
+        Project name
+       </label>
+       <input id="projectName" maxlength="120" placeholder="e.g. Website redesign" required=""/>
+      </div>
+      <div class="field field-wide">
+       <label for="projectDescription">
+        Description
+       </label>
+       <textarea id="projectDescription" placeholder="What is this project about?" rows="3"></textarea>
+      </div>
+      <div class="field">
+       <label for="projectDeadline">
+        Deadline
+       </label>
+       <input id="projectDeadline" type="date"/>
+      </div>
+      <div class="field">
+       <label for="projectPriority">
+        Priority
+       </label>
+       <select id="projectPriority">
+        <option value="high">
+         High
+        </option>
+        <option selected="" value="medium">
+         Medium
+        </option>
+        <option value="low">
+         Low
+        </option>
+       </select>
+      </div>
+     </div>
+     <p class="message" id="projectFormMessage" role="status">
+     </p>
+     <div class="form-actions">
+      <button class="btn btn-secondary" id="cancelProjectForm" type="button">
+       Cancel
+      </button>
+      <button class="btn btn-primary" type="submit">
+       Save project
+      </button>
+     </div>
+    </form>
+   </section>
+   <section class="filter-row">
+    <div>
+     <h2 class="section-title">
+      Your workspace
+     </h2>
+     <p class="muted" id="projectCount">
+      Loading projects…
+     </p>
+    </div>
+    <div class="filters">
+     <input aria-label="Search projects" id="projectSearch" placeholder="Search projects…" type="search"/>
+     <select aria-label="Filter by priority" id="priorityFilter">
+      <option value="all">
+       All priorities
+      </option>
+      <option value="high">
+       High priority
+      </option>
+      <option value="medium">
+       Medium priority
+      </option>
+      <option value="low">
+       Low priority
+      </option>
+     </select>
+    </div>
+   </section>
+   <section class="project-grid" id="projectGrid">
+   </section>
+  </main>
+ 
+<template id="projectCardTemplate">
+  <article class="project-card">
+    <div class="project-card-top">
+      <h2 class="project-card-name"></h2>
+      <span class="priority"></span>
+    </div>
+    <p class="project-description"></p>
+    <div class="task-meta"><span class="project-task-count"></span><span>·</span><span class="project-deadline"></span></div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+    <div class="project-card-foot"><span class="project-progress"></span><span class="project-members"></span></div>
+    <div class="project-card-actions">
+      <a class="btn btn-primary project-open">Open project →</a>
+      <button type="button" class="btn btn-secondary project-action"></button>
+    </div>
+  </article>
+</template>
+
+</body>
+</html>
+

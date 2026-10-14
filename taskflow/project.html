@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Project | TaskFlow
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="javascript/app.js">
+  </script>
+  <script defer="" src="javascript/project.js">
+  </script>
+ </head>
+ <body class="app-page">
+  <header class="topbar">
+   <a class="brand" href="dashboard.html">
+    TaskFlow
+    <span>
+     .
+    </span>
+   </a>
+   <nav aria-label="Main navigation" class="topnav">
+    <a class="nav-link" href="dashboard.html">
+     Dashboard
+    </a>
+    <a class="nav-link" href="my-tasks.html">
+     My Tasks
+    </a>
+    <a aria-current="page" class="nav-link active" href="projects.html">
+     My projects
+    </a>
+    <a class="nav-link" href="invitations.html">
+     Invitations
+    </a>
+    <a class="nav-link" href="profile.html">
+     Profile
+    </a>
+   </nav>
+   <div class="user-menu">
+    <span class="user-greeting" id="userGreeting">
+    </span>
+    <button class="btn btn-quiet btn-small" id="logoutButton">
+     Log out
+    </button>
+   </div>
+  </header>
+  <main class="page-shell">
+   <p class="breadcrumb">
+    <a href="projects.html">
+     ← All projects
+    </a>
+   </p>
+   <section class="project-hero panel" id="projectHeader">
+   </section>
+   <section class="project-work-grid" id="projectWorkGrid">
+    <article class="panel tasks-panel">
+     <div class="panel-heading">
+      <div>
+       <h2>
+        Tasks
+       </h2>
+       <p class="muted">
+        Break the project into manageable steps.
+       </p>
+      </div>
+      <button class="btn btn-primary" id="showTaskForm">
+       ＋ Add task
+      </button>
+     </div>
+     <div class="task-form-panel hidden" id="taskFormPanel">
+      <form id="taskForm">
+       <input id="taskId" type="hidden"/>
+       <div class="form-grid">
+        <div class="field field-wide">
+         <label for="taskTitle">
+          Task title
+         </label>
+         <input id="taskTitle" maxlength="120" placeholder="What needs to be done?" required=""/>
+         <label for="taskDescription">
+          Description
+         </label>
+         <textarea id="taskDescription" maxlength="10000" placeholder="Details about this task (optional)" rows="3"></textarea>
+        </div>
+        <div class="field">
+         <label for="taskAssignee">
+          Assign to
+         </label>
+         <select id="taskAssignee">
+          <option value="">
+           Unassigned
+          </option>
+         </select>
+        </div>
+        <div class="field">
+         <label for="taskDeadline">
+          Deadline
+         </label>
+         <input id="taskDeadline" type="date"/>
+        </div>
+        <div class="field">
+         <label for="taskPriority">
+          Priority
+         </label>
+         <select id="taskPriority">
+          <option value="high">
+           High
+          </option>
+          <option selected="" value="medium">
+           Medium
+          </option>
+          <option value="low">
+           Low
+          </option>
+         </select>
+        </div>
+        <div class="field">
+         <label for="taskStatus">
+          Status
+         </label>
+         <select id="taskStatus">
+          <option value="todo">
+           To do
+          </option>
+          <option value="doing">
+           In progress
+          </option>
+          <option value="done">
+           Completed
+          </option>
+         </select>
+        </div>
+       </div>
+       <div class="form-actions">
+        <button class="btn btn-secondary" id="cancelTaskForm" type="button">
+         Cancel
+        </button>
+        <button class="btn btn-primary" type="submit">
+         Save task
+        </button>
+       </div>
+       <p class="message" id="taskFormMessage" role="status">
+       </p>
+      </form>
+     </div>
+     <div class="task-toolbar">
+      <select aria-label="Filter tasks by status" id="taskStatusFilter">
+       <option value="all">
+        All tasks
+       </option>
+       <option value="todo">
+        To do
+       </option>
+       <option value="doing">
+        In progress
+       </option>
+       <option value="done">
+        Completed
+       </option>
+      </select>
+      <select aria-label="Filter tasks by priority" id="taskPriorityFilter">
+       <option value="all">
+        All priorities
+       </option>
+       <option value="high">
+        High priority
+       </option>
+       <option value="medium">
+        Medium priority
+       </option>
+       <option value="low">
+        Low priority
+       </option>
+      </select>
+     </div>
+     <div class="task-list" id="taskList">
+     </div>
+    </article>
+    <aside class="side-column">
+     <article class="panel progress-panel">
+      <h2>
+       Project progress
+      </h2>
+      <div class="progress-number" id="progressNumber">
+       0%
+      </div>
+      <div class="progress-track">
+       <div class="progress-fill" id="progressBar">
+       </div>
+      </div>
+      <p class="muted small-text" id="progressCaption">
+       0 of 0 tasks completed
+      </p>
+     </article>
+     <article class="panel team-panel">
+      <div class="panel-heading">
+       <div>
+        <h2>
+         Project team
+        </h2>
+        <p class="muted">
+         Invite a registered user. They join only after accepting.
+        </p>
+       </div>
+      </div>
+      <form class="member-form" id="memberForm">
+       <input aria-label="Username to invite" id="memberName" placeholder="Username to invite" required=""/>
+       <button class="btn btn-secondary" type="submit">
+        Invite
+       </button>
+      </form>
+      <p class="message" id="memberMessage" role="status">
+      </p>
+      <div class="member-list" id="memberList">
+      </div>
+      <section aria-labelledby="pendingInvitationsHeading" class="pending-invitations hidden" id="pendingInvitations">
+       <h3 id="pendingInvitationsHeading">
+        Pending invitations
+       </h3>
+       <div class="pending-invite-list" id="pendingInviteList">
+       </div>
+      </section>
+     </article>
+     <article class="panel settings-panel" id="ownerSettings">
+      <h2>
+       Project settings
+      </h2>
+      <p class="muted small-text">
+       Change project details or remove this project.
+      </p>
+      <button class="btn btn-secondary btn-full" id="editProjectButton">
+       Edit project settings
+      </button>
+      <button class="btn btn-danger btn-full" id="deleteProjectButton">
+       Delete project
+      </button>
+     </article>
+     <article class="panel settings-panel hidden" id="leaveProjectPanel">
+      <h2>
+       Leave project
+      </h2>
+      <p class="muted small-text">
+       You can leave this project at any time. Tasks assigned to you will become unassigned, and you will no longer see the project.
+      </p>
+      <button class="btn btn-danger btn-full" id="leaveProjectButton" type="button">
+       Leave project
+      </button>
+      <p class="message" id="leaveProjectMessage" role="alert">
+      </p>
+     </article>
+    </aside>
+   </section>
+  </main>
+ 
+<template id="projectHeroTemplate">
+  <div class="project-hero-top">
+    <div>
+      <span class="priority hero-priority"></span>
+      <h1 class="hero-name"></h1>
+      <p class="muted hero-description"></p>
+      <div class="hero-meta">
+        <span class="hero-deadline"></span><span>·</span><span class="hero-members"></span>
+      </div>
+    </div>
+    <a class="btn btn-secondary" href="projects.html">All projects</a>
+  </div>
+</template>
+<template id="projectTaskTemplate">
+  <div class="task-row">
+    <div class="task-main">
+      <div class="task-title"></div>
+      <p class="task-description"></p>
+      <div class="task-meta">
+        <span class="status-pill"></span>
+        <span class="task-deadline"></span>
+        <span class="task-assignee"></span>
+      </div>
+    </div>
+    <span class="priority"></span>
+    <div class="task-actions">
+      <button type="button" class="icon-button edit-task" aria-label="Edit task">Edit</button>
+      <button type="button" class="icon-button delete-task" aria-label="Delete task">×</button>
+    </div>
+  </div>
+</template>
+<template id="projectMemberTemplate">
+  <div class="member-item">
+    <span class="avatar"></span>
+    <div class="member-name"><span class="member-username"></span><div class="member-role"></div></div>
+    <button type="button" class="remove-member">Remove</button>
+  </div>
+</template>
+<template id="pendingInviteTemplate">
+  <div class="pending-invite-item">
+    <span><span class="pending-username"></span> <span class="pending-label">Pending</span></span>
+    <button type="button" class="remove-member cancel-invite">Cancel</button>
+  </div>
+</template>
+<template id="projectErrorTemplate">
+  <div class="empty-state">
+    <strong>Could not open project</strong>
+    <p class="project-error-message"></p>
+    <a class="text-link" href="projects.html">Return to projects</a>
+  </div>
+</template>
+
+</body>
+</html>
+

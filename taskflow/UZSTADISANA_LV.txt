@@ -1,0 +1,40 @@
+TASKFLOW - MAPJU VERSIJA / UZSTADISANA
+===================================
+
+Kas mainits:
+- JavaScript faili atrodas javascript/ mape.
+- CSS atrodas css/style.css.
+- SQL faili atrodas sql/ mape.
+- HTML lapas atrodas taskflow/ saknes mape.
+- Dinamisko kartisu HTML tagad atrodas attiecigajos .html failos zem <template>.
+- PHP API, lietotaju dati un uzaicinajumu logika nav mainita.
+
+JA TEV JAU IR DARBOJOSA TASKFLOW DATUBAZE:
+1. Izveido datubazes rezerves kopiju ar phpMyAdmin > Export.
+2. Izveido vecas C:\xampp\htdocs\taskflow mapes rezerves kopiju.
+3. SAGLABA config.local.php atseviski: taja ir TAVA datubazes parole.
+4. Aizvieto veco taskflow mapi ar jauno no si ZIP.
+5. Iekope savu config.local.php jaunaja taskflow mape blakus config.php.
+6. NEIMPORTe database.sql vai upgrade failus tikai mapju parvietosanas del.
+7. Atver http://localhost/taskflow/ un parbaudi pieslegsanos.
+
+JA VEIDO JAUNU INSTALACIJU:
+- Ievieto taskflow mapi C:\xampp\htdocs\.
+- phpMyAdmin importa sql/database.sql (izveido visas tabulas).
+- Izveido MySQL lietotaju taskflow_app un tiesibas uz taskflow_db.
+- Kopē config.local.example.php -> config.local.php un noradi datubazes datus.
+- Nesuti nevienam savu config.local.php vai paroles.
+
+HTML REDIGESANA:
+- My Tasks kartites: my-tasks.html > personalTaskTemplate
+- Dashboard: dashboard.html > dashboardTaskTemplate, projectOverviewTemplate
+- Projekti: projects.html > projectCardTemplate
+- Projekta detalas: project.html > projectHeroTemplate, projectTaskTemplate,
+  projectMemberTemplate un pendingInviteTemplate
+- Uzaicinajumi: invitations.html > invitationCardTemplate
+- Krasa, teksta izskats un izkartojums: css/style.css
+- Datu apstrade un pogu darbiba: javascript/attiecigais fails
+
+SVARIGI: ja redzi 'Database credentials are not configured safely',
+parbaudi config.local.php un MySQL pieslegsanas lietotaju/paroli.
+Mapju organizacija pati par sevi nemaina datubazes paroles vai tiesibas.

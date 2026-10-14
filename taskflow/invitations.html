@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Invitations | TaskFlow
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="javascript/app.js">
+  </script>
+  <script defer="" src="javascript/invitations.js">
+  </script>
+ </head>
+ <body class="app-page">
+  <header class="topbar">
+   <a class="brand" href="dashboard.html">
+    TaskFlow
+    <span>
+     .
+    </span>
+   </a>
+   <nav aria-label="Main navigation" class="topnav">
+    <a class="nav-link" href="dashboard.html">
+     Dashboard
+    </a>
+    <a class="nav-link" href="my-tasks.html">
+     My Tasks
+    </a>
+    <a class="nav-link" href="projects.html">
+     My projects
+    </a>
+    <a aria-current="page" class="nav-link active" href="invitations.html">
+     Invitations
+    </a>
+    <a class="nav-link" href="profile.html">
+     Profile
+    </a>
+   </nav>
+   <div class="user-menu">
+    <span class="user-greeting" id="userGreeting">
+    </span>
+    <button class="btn btn-quiet btn-small" id="logoutButton" type="button">
+     Log out
+    </button>
+   </div>
+  </header>
+  <main class="page-shell">
+   <section class="welcome-row">
+    <div>
+     <p class="eyebrow">
+      WORK TOGETHER
+     </p>
+     <h1>
+      Project invitations
+     </h1>
+     <p class="muted">
+      Choose which teams you want to join.
+     </p>
+    </div>
+    <a class="btn btn-secondary" href="projects.html">
+     My projects
+    </a>
+   </section>
+   <p aria-live="polite" class="message page-error" id="invitationsError" role="alert">
+   </p>
+   <p aria-live="polite" class="message page-notice" id="invitationsNotice" role="status">
+   </p>
+   <section aria-labelledby="invitationsTitle" class="panel invitations-panel">
+    <div class="panel-heading">
+     <div>
+      <h2 id="invitationsTitle">
+       Pending invitations
+      </h2>
+      <p class="muted">
+       You won't be added to a project until you accept its invitation.
+      </p>
+     </div>
+     <span aria-live="polite" class="invite-count" id="invitationCount">
+     </span>
+    </div>
+    <div aria-live="polite" class="invitation-list" id="invitationsList">
+     <p class="muted">
+      Loading invitations…
+     </p>
+    </div>
+   </section>
+  </main>
+ 
+<template id="invitationCardTemplate">
+  <article class="invitation-card">
+    <div class="invitation-details">
+      <h3 class="invitation-project"></h3>
+      <p class="invitation-description"></p>
+      <p class="muted invitation-byline"></p>
+    </div>
+    <div class="invitation-actions">
+      <button type="button" class="btn btn-primary accept-invitation">Accept</button>
+      <button type="button" class="btn btn-secondary decline-invitation">Decline</button>
+    </div>
+  </article>
+</template>
+
+</body>
+</html>
+

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   My Tasks | TaskFlow
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="javascript/app.js">
+  </script>
+  <script defer="" src="javascript/my-tasks.js">
+  </script>
+ </head>
+ <body class="app-page">
+  <header class="topbar">
+   <a class="brand" href="dashboard.html">
+    TaskFlow
+    <span>
+     .
+    </span>
+   </a>
+   <nav aria-label="Main navigation" class="topnav">
+    <a class="nav-link" href="dashboard.html">
+     Dashboard
+    </a>
+    <a aria-current="page" class="nav-link active" href="my-tasks.html">
+     My Tasks
+    </a>
+    <a class="nav-link" href="projects.html">
+     My projects
+    </a>
+    <a class="nav-link" href="invitations.html">
+     Invitations
+    </a>
+    <a class="nav-link" href="profile.html">
+     Profile
+    </a>
+   </nav>
+   <div class="user-menu">
+    <span class="user-greeting" id="userGreeting">
+    </span>
+    <button class="btn btn-quiet btn-small" id="logoutButton" type="button">
+     Log out
+    </button>
+   </div>
+  </header>
+  <main class="page-shell">
+   <section class="welcome-row">
+    <div>
+     <p class="eyebrow">
+      PRIVATE WORKSPACE
+     </p>
+     <h1>
+      My Tasks
+     </h1>
+     <p class="muted">
+      Only you can see and manage these personal tasks.
+     </p>
+    </div>
+    <button class="btn btn-primary" id="showPersonalTaskForm" type="button">
+     ＋ Add personal task
+    </button>
+   </section>
+   <p aria-live="polite" class="message page-error" id="personalTasksError" role="alert">
+   </p>
+   <section aria-labelledby="personalTaskFormTitle" class="panel form-panel hidden" id="personalTaskFormPanel">
+    <h2 id="personalTaskFormTitle">
+     New personal task
+    </h2>
+    <form id="personalTaskForm">
+     <input id="personalTaskId" type="hidden"/>
+     <div class="form-grid">
+      <div class="field field-wide">
+       <label for="personalTaskTitle">
+        Task title
+       </label>
+       <input id="personalTaskTitle" maxlength="120" placeholder="What needs to be done?" required=""/>
+      </div>
+      <div class="field field-wide">
+       <label for="personalTaskDescription">
+        Description (optional)
+       </label>
+       <textarea id="personalTaskDescription" maxlength="10000" placeholder="Write the details here..." rows="3"></textarea>
+      </div>
+      <div class="field">
+       <label for="personalTaskDeadline">
+        Deadline
+       </label>
+       <input id="personalTaskDeadline" type="date"/>
+      </div>
+      <div class="field">
+       <label for="personalTaskPriority">
+        Priority
+       </label>
+       <select id="personalTaskPriority">
+        <option value="low">
+         Low
+        </option>
+        <option selected="" value="medium">
+         Medium
+        </option>
+        <option value="high">
+         High
+        </option>
+       </select>
+      </div>
+      <div class="field">
+       <label for="personalTaskStatus">
+        Status
+       </label>
+       <select id="personalTaskStatus">
+        <option value="todo">
+         To do
+        </option>
+        <option value="doing">
+         In progress
+        </option>
+        <option value="done">
+         Completed
+        </option>
+       </select>
+      </div>
+     </div>
+     <p aria-live="polite" class="message" id="personalTaskFormMessage" role="status">
+     </p>
+     <div class="form-actions">
+      <button class="btn btn-secondary" id="cancelPersonalTaskForm" type="button">
+       Cancel
+      </button>
+      <button class="btn btn-primary" type="submit">
+       Save task
+      </button>
+     </div>
+    </form>
+   </section>
+   <section aria-label="Personal task list" class="panel list-panel">
+    <div class="panel-heading">
+     <div>
+      <h2>
+       Personal task list
+      </h2>
+      <p class="muted" id="personalTaskCount">
+       Loading…
+      </p>
+     </div>
+    </div>
+    <div class="task-toolbar task-filters">
+     <label class="filter-control" for="personalStatusFilter">
+      Status
+      <select id="personalStatusFilter">
+       <option value="open">
+        Active
+       </option>
+       <option value="done">
+        Completed
+       </option>
+       <option value="all">
+        All tasks
+       </option>
+      </select>
+     </label>
+     <label class="filter-control" for="personalPriorityFilter">
+      Priority
+      <select id="personalPriorityFilter">
+       <option value="all">
+        All priorities
+       </option>
+       <option value="high">
+        High
+       </option>
+       <option value="medium">
+        Medium
+       </option>
+       <option value="low">
+        Low
+       </option>
+      </select>
+     </label>
+     <label class="filter-control" for="personalSort">
+      Sort by
+      <select id="personalSort">
+       <option value="deadline">
+        Deadline (soonest)
+       </option>
+       <option value="priority">
+        Priority (highest)
+       </option>
+       <option value="newest">
+        Newest first
+       </option>
+      </select>
+     </label>
+    </div>
+    <div aria-live="polite" class="task-list" id="personalTaskList">
+    </div>
+   </section>
+  </main>
+ 
+<template id="personalTaskTemplate">
+  <div class="task-row">
+    <div class="task-main">
+      <div class="task-title"></div>
+      <p class="task-description"></p>
+      <div class="task-meta">
+        <span class="status-pill"></span>
+        <span class="task-deadline"></span>
+      </div>
+    </div>
+    <span class="priority"></span>
+    <div class="task-actions">
+      <button type="button" class="icon-button toggle-personal"></button>
+      <button type="button" class="icon-button edit-personal">Edit</button>
+      <button type="button" class="icon-button delete-personal">Delete</button>
+    </div>
+  </div>
+</template>
+
+</body>
+</html>
+
